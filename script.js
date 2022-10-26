@@ -172,3 +172,17 @@ myDay.forEach(function(selectedHour) {
     hourReminder.append(reminderData);
     // sets the ID of each hour to the given ID in the myDay array
     reminderData.attr("id", selectedHour.id);
+    // checks for the current time to update background color
+    if (selectedHour.time < moment().format("HH")) {
+        reminderData.attr ({
+            "class": "past", 
+        })
+    } else if (selectedHour.time === moment().format("HH")) {
+        reminderData.attr({
+            "class": "present"
+        })
+    } else if (selectedHour.time > moment().format("HH")) {
+        reminderData.attr({
+            "class": "future"
+        })
+    }
