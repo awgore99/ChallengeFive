@@ -146,3 +146,29 @@ function runReminders() {
     saveReminders();
     displayReminders();
 }
+
+//function to create and append rows and information to the page
+myDay.forEach(function(selectedHour) {
+    // creates rows to append the information to
+    var hourRow = $("<form>").attr({
+        "class": "row"
+    });
+    $(".container").append(hourRow);
+
+    // creates space for each hour and timestamp in the grid
+    var hourField = $("<div>")
+        .text(`${selectedHour.hour}${selectedHour.am_pm}`)
+        .attr({
+            "class": "col-md-2 hour"
+    });
+    // creates field to append text to populate the page
+    var hourReminder = $("<div>")
+        .attr({
+            "class": "col-md-9 description p-0"
+        });
+    // sets reminderData to whatever the user inputed for the reminder
+    var reminderData = $("<textarea>");
+    // appends the text to the actual container to be manipulated by styling
+    hourReminder.append(reminderData);
+    // sets the ID of each hour to the given ID in the myDay array
+    reminderData.attr("id", selectedHour.id);
