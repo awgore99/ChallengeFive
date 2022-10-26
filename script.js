@@ -121,8 +121,28 @@ function getCurrentDate() {
     $("#currentDay").text(currentDate);
 }
 
+//Calls function to display date to the page
+getCurrentDate();
+
 // saves data to localStorage
 function saveReminders() {
     localStorage.setItem("myDay", JSON.stringify(myDay));
 }
 
+// appends data in localStorage to the page
+function displayReminders() {
+    myDay.forEach(function (selectedHour) {
+        $(`#${selectedHour.id}`).val(selectedHour.reminder);
+    })
+}
+
+//function to call saveReminders() and displayReminders(), and check that 'myDay' stored locally correctly with information
+function runReminders() {
+    var desiredDay = JSON.parse(localStorage.getItem('myDay'));
+    //checks that desiredDay populated with information
+    if (desiredDay){
+        myDay = desiredDay;
+    }
+    saveReminders();
+    displayReminders();
+}
