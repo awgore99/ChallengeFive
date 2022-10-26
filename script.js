@@ -120,3 +120,9 @@ function getCurrentDate() {
     var currentDate = moment().format('dddd, MMMM Do');
     $("#currentDay").text(currentDate);
 }
+
+// saves data to localStorage
+function saveReminders() {
+    localStorage.setItem("myDay", JSON.stringify(myDay));
+}
+
