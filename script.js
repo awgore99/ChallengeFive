@@ -50,7 +50,7 @@ myDay.forEach(function(selectedHour) {
     // creates field to append text to populate the page
     var hourReminder = $("<div>")
         .attr({
-            "class": "col-md-9 description p-0"
+            "class": "col-md-9 reminder p-0"
         });
     // sets reminderData to whatever the user inputed for the reminder
     var reminderData = $("<textarea>");
@@ -87,12 +87,12 @@ myDay.forEach(function(selectedHour) {
 runReminders();
 
 // saves data with a button click
-$(".saveBtn").addEventListener("click", function(event) {
+$(".saveBtn").on("click", function(event) {
     event.preventDefault();
     //Accesses the ID of each hour to save the reminder to
-    var saveIndex = $(this).siblings(".description").children(".future").attr("id");
+    var saveIndex = $(this).siblings(".reminder").children(".future").attr("id");
     //Uses the specific ID from the line prior, to save the text to the specific object corresponding with that ID
-    myDay[saveIndex].reminder = $(this).siblings(".description").children(".future").val();
+    myDay[saveIndex].reminder = $(this).siblings(".reminder").children(".future").val();
     //Logs the ID
     console.log(saveIndex);
     saveReminders();
