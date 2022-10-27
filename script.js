@@ -43,12 +43,12 @@ myDay.forEach(function(selectedHour) {
     var hourField = $("<div>")
         .text(`${selectedHour.hour}${selectedHour.am_pm}`)
         .attr({
-            "class": "col-md-2 hour"
+            "class": "col-md-3 hour"
     });
     // creates field to append text to populate the page
     var hourReminder = $("<div>")
         .attr({
-            "class": "col-md-9 reminder p-0"
+            "class": "col-md-8 reminder p-0"
         });
     // sets reminderData to whatever the user inputed for the reminder
     var reminderData = $("<textarea>");
@@ -74,7 +74,7 @@ myDay.forEach(function(selectedHour) {
     var saveButton = $("<i class='far fa-save fa-lg'></i>")
     var saveReminder = $("<button>")
         .attr({
-            "class": "col-md-1 saveBtn"
+            "class": "col-md-2 saveBtn"
     });
     //Adds the save button to the container
     saveReminder.append(saveButton);
