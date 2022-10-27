@@ -1,6 +1,4 @@
-// Array of objects to represent each hour of the day to iterate through
-import * as chooseName from './myDayArray.js';
-var myDay = chooseName.myDay;
+
 // gets the current date to append to the top of the page
 function getCurrentDate() {
     var currentDate = moment().format('dddd, MMMM Do');
