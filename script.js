@@ -1,6 +1,6 @@
 // Array of objects to represent each hour of the day to iterate through
-import myDay from 'myDayArray.js';
-
+import * as chooseName from './myDayArray.js';
+var myDay = chooseName.myDay;
 // gets the current date to append to the top of the page
 function getCurrentDate() {
     var currentDate = moment().format('dddd, MMMM Do');
@@ -78,9 +78,23 @@ myDay.forEach(function(selectedHour) {
         .attr({
             "class": "col-md-1 saveBtn"
     });
+    //Adds the save button to the container
     saveReminder.append(saveButton);
+    //Adds the specific information for each grid spot to the page
     hourRow.append(hourField, hourReminder, saveReminder);
 })
 
 runReminders();
 
+// saves data with a button click
+$(".saveBtn").addEventListener("click", function(event) {
+    event.preventDefault();
+    //Accesses the ID of each hour to save the reminder to
+    var saveIndex = $(this).siblings(".description").children(".future").attr("id");
+    //Uses the specific ID from the line prior, to save the text to the specific object corresponding with that ID
+    myDay[saveIndex].reminder = $(this).siblings(".description").children(".future").val();
+    //Logs the ID
+    console.log(saveIndex);
+    saveReminders();
+    displayReminders();
+})
